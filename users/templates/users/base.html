@@ -84,7 +84,7 @@
                     </a>
                 </li>
                 <li class="{% if request.resolver_match.url_name == 'logout' %}active{%endif%}">
-                <a href="" id="logout">
+                <a href="{% url 'logout' %}" id="logout" >
                     <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Log out
                 </a>
             </li>

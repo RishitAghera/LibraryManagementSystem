@@ -1,7 +1,11 @@
 {% extends 'users/base.html' %}
 {% block title %}Index{% endblock title %}
 {% block body %}
-Hello world
+{% if request.user %}
+    Please login first
+{% else %}
+    Hello {{ request.user.username }}
+{% endif %}
 <!--<center>-->
 <!--{% if messages %}-->
 <!--    <ul class="messages" align="center">-->

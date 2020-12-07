@@ -20,11 +20,13 @@ from users.views import index
 
 from users.views import Registration
 
+from users.views import Login,Logout
+
 urlpatterns = [
     path('', index, name='index'),
     path('registration/', Registration.as_view(), name='registration'),
-    # path('login/', Login.as_view(), name='login'),
-    # path('logout/', Logout, name='logout'),
+    path('login/', Login.as_view(), name='login'),
+    path('logout/', Logout, name='logout'),
     # path('profile/<int:pk>/', ProfileView.as_view(), name="profile"),
     # path('profile/update/<int:pk>/', ProfileUpdate.as_view(), name="update-profile"),
 ]
