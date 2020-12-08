@@ -1,0 +1,55 @@
+{% extends 'accounts/base.html' %}
+{% block body %}
+<center>
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>
+            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Important: {% endif %}
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+{% if object_list %}
+    <h2>Pending Requests</h2>
+    <table class="table table-hover" style="width:70%;">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Information</th>
+        </tr>
+    </thead>
+    {% for book in object_list %}
+        <tr><td>{{forloop.counter}}</td><td>{{book.book.name}}</td><td>{{book.book.author}}</td><td>{{book.book.information}}</td>
+            <td><form method="post" action="{% url 'book:delrequser' %}">{% csrf_token %}<input type="hidden" name="book_id" value="{{ book.book.id }}"><input type="hidden" name="user_id" value="{{ book.user.id }}"><button class="btn btn-default">cancel</button></form></td></tr>
+    {% endfor %}
+    </table>
+{% endif %}
+
+
+    {% if Waiting_list %}
+    <h2>Book in Waiting List</h2>
+    <table class="table table-hover" style="width:70%;">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Book Name</th>
+            <th>Author</th>
+            <th>Information</th>
+        </tr>
+    </thead>
+
+    {% for book in Waiting_list %}
+        <tr><td>{{forloop.counter}}</td><td>{{book.waiting.book.name}}</td><td>{{book.waiting.book.author}}</td><td>{{book.waiting.book.information}}</td>
+            <td><form method="post" action="{% url 'book:waitingreqdelete'%}">{% csrf_token %}<input type="hidden" name="book_id" value="{{ book.waiting.book.id }}"><input type="hidden" name="user_id" value="{{ book.waiting.user.id }}"><button class="btn btn-default">cancel</button></form></td></tr>
+    {% endfor %}
+    
+    {% endif%}
+    </table>
+
+    </center>
+{% endblock body %}
