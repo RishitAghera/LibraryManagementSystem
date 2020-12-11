@@ -21,7 +21,7 @@
                 <td>{{ book.author }}</td>
                 <td>{{ book.information }}</td>
                 {% if user.is_staff %}<td><a href="" class="glyphicon glyphicon-edit btn btn-danger"></a>
-                        <a href="" class="glyphicon glyphicon-remove btn btn-danger"></a></td>{% endif %}
+                        <a href="{% url 'book:bookdelete' book.id %}" class="glyphicon glyphicon-remove btn btn-danger"></a></td>{% endif %}
             </tr>
         {% endfor %}
 </table>

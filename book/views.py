@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
 # Create your views here.
+from django.urls import reverse_lazy
 from django.views import generic
 
 from book.models import Book
@@ -12,3 +13,7 @@ class AllBookList(generic.ListView):
 
     def get_queryset(self):
         return Book.objects.all()
+
+class BookDelete(generic.DeleteView):
+    model = Book
+    success_url = reverse_lazy('book:booklist')
