@@ -55,7 +55,7 @@ class Login(View):
             #     messages.error(request, 'User Not Found please Enter Valid data' + str(form.errors))
             if user:
                 print('authenticated')
-                return render(request, 'users/index.html')
+                return redirect('index')
             else:
                 print(' not authenticated')
                 form = LoginForm()

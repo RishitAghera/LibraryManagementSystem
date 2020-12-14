@@ -8,4 +8,5 @@ app_name = 'book'
 urlpatterns = [
     path('list/',views.AllBookList.as_view(),name='booklist'),
     path('delete/<int:pk>/',views.BookDelete.as_view(),name='bookdelete'),
+    path('update/<int:pk>/',views.BookUpdate.as_view(),name='bookupdate'),
 ]

@@ -1,10 +1,10 @@
 {% extends 'users/base.html' %}
 {% block title %}Index{% endblock title %}
 {% block body %}
-{% if request.user %}
-    Please login first
-{% else %}
+{% if user.is_authenticated %}
     Hello {{ request.user.username }}
+{% else %}
+    Please login first
 {% endif %}
 <!--<center>-->
 <!--{% if messages %}-->

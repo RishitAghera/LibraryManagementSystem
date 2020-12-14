@@ -17,3 +17,8 @@ class AllBookList(generic.ListView):
 class BookDelete(generic.DeleteView):
     model = Book
     success_url = reverse_lazy('book:booklist')
+
+class BookUpdate(generic.UpdateView):
+    model = Book
+    fields = '__all__'
+

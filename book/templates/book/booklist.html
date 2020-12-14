@@ -18,9 +18,9 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ book.name }}</td>
-                <td>{{ book.author }}</td>
+                <td>{{ book.author.all }}</td>
                 <td>{{ book.information }}</td>
-                {% if user.is_staff %}<td><a href="" class="glyphicon glyphicon-edit btn btn-danger"></a>
+                {% if user.is_staff %}<td><a href="{% url 'book:bookupdate' book.id %}" class="glyphicon glyphicon-edit btn btn-danger"></a>
                         <a href="{% url 'book:bookdelete' book.id %}" class="glyphicon glyphicon-remove btn btn-danger"></a></td>{% endif %}
             </tr>
         {% endfor %}
