@@ -1,4 +1,4 @@
-from django.contrib.auth import authenticate, logout
+from django.contrib.auth import authenticate, logout, login
 from django.shortcuts import render, redirect
 from users.forms import LoginForm
 
@@ -11,6 +11,9 @@ from users.forms import LoginForm
 
 from LMS import settings
 
+from django.views import generic
+
+from .models import User
 
 def index(request):
     return render(request, 'users/index.html')
@@ -54,6 +57,7 @@ class Login(View):
             # else:
             #     messages.error(request, 'User Not Found please Enter Valid data' + str(form.errors))
             if user:
+                login(request, user)
                 print('authenticated')
                 return redirect('index')
             else:
@@ -64,3 +68,13 @@ class Login(View):
 def Logout(request):
     logout(request)
     return redirect(settings.LOGOUT_REDIRECT_URL)
+
+
+class ProfileView(generic.DetailView):
+    model = User
+    template_name = 'users/profile.html'
+    extra_context = {'form': RegistrationForm()}
+
+class ProfileUpdate(generic.UpdateView):
+    model = User
+    fields = ['name', 'username', 'gender', 'contact']

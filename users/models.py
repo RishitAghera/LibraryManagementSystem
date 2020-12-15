@@ -2,6 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 # Create your models here.
+from django.urls import reverse
+
 GENDER = (('M', 'Male'),
           ('F', 'Female'))
 
@@ -19,5 +21,5 @@ class User(AbstractUser):
     def __str__(self):
         return str(self.name)
 
-    # def get_absolute_url(self):
-    #     return reverse('users:profile',kwargs={'pk':self.pk})
+    def get_absolute_url(self):
+        return reverse('profile',kwargs={'pk':self.pk})

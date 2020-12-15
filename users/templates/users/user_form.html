@@ -1,4 +1,4 @@
-{% extends 'accounts/base.html' %}
+{% extends 'users/base.html' %}
 
 {% block body %}<center>
 <h1>Profile</h1>
@@ -9,7 +9,6 @@
     <table class="table table-hover" style="width:40%;">
     {% for field in form %}
     <tr><td>{{ field.label_tag }}</td><td>{{ field }}</td><td>{{ field.errors }}</td></tr>
-
     {% endfor %}
 
 </table>

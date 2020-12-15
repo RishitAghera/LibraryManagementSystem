@@ -89,7 +89,7 @@
                 </a>
             </li>
                 <li class="active">
-                    <a href=""><span aria-hidden="true"></span><b>Librarian: {{user.name}}</b></a>
+                    <a href="{% url 'profile' user.id %}"><span aria-hidden="true"></span><b>Librarian: {{user.name}}</b></a>
                 </li>
                 {% else %}
                 <li class="">
